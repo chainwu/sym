@@ -1,1 +1,2 @@
 pypinyin
+opencc-python-reimplemented

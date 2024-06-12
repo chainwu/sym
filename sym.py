@@ -5,6 +5,7 @@ from pypinyin import pinyin, lazy_pinyin, Style
 import os
 import pickle
 import sys
+from opencc import OpenCC
 
 def get_all_char_pinyin():
     path="single.dict"
@@ -27,11 +28,11 @@ def get_all_char_pinyin():
 
 def convert(txt):
     char_dict, pinyin_dict=get_all_char_pinyin()
-
+    cc = OpenCC('t2s')
     with open(txt, "r", encoding="utf-8") as fl:
         for line in fl.readlines():
             line=line.strip()
-
+            line=cc.convert(line)
             similar_dict={}
             for c in line:
                 if c not in char_dict: 
@@ -52,6 +53,7 @@ def convert(txt):
                 else:
                     print(c, end=" ")
                     
+    print()
 
 if __name__=='__main__':
     txt=sys.argv[1]
