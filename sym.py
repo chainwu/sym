@@ -1,6 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
+""" Usage:
+      sym.py text_file
+      This program convert the unknown characters with known characters with the same prounciation
+"""
+
 from pypinyin import pinyin, lazy_pinyin, Style
 import os
 import pickle
@@ -56,5 +61,9 @@ def convert(txt):
     print()
 
 if __name__=='__main__':
-    txt=sys.argv[1]
-    convert(txt)
+    try:
+        txt=sys.argv[1]
+        convert(txt)
+    except:
+        print(__doc__)
+        sys.exit(0)
