@@ -1,2 +1,6 @@
 pypinyin
 opencc-python-reimplemented
+Levenshtein
+tgt
+pandas
+openpyxl
